@@ -1,0 +1,161 @@
+@use "common" as *;
+
+.mobile-menu-wrapper{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+
+  .menu-close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    background: #dc3545;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .menu-overlay {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: argb(#000, 0.9);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    cursor: url(../img/icon/close.png), auto;
+    @include transitions(all 0.3s ease-in 0.6s);
+  }
+
+  .agenia-mobile-menu{
+    background: #fff;
+    width: 375px;
+    height: 100%;
+    top: 0;
+    z-index: 99;
+    position: fixed;
+    left: -100%;
+    opacity: 0;
+    visibility: hidden;
+    padding: 30px 15px;
+    -webkit-overflow-scrolling: touch;
+    @include transitions(all 0.6s cubic-bezier(0.9, 0.03, 0, 0.96) 0s);
+    overflow-y: auto;
+  }
+
+  &.active {
+    .menu-overlay {
+      visibility: visible;
+      left: 0;
+      opacity: 1;
+      @include transitions(all 0.6s ease-out 0s);
+    }
+
+    .agenia-mobile-menu {
+      opacity: 1;
+      visibility: visible;
+      left: 0;
+      @include transitions(all 0.3s cubic-bezier(0.9, 0.03, 0, 0.96) 0.6s);
+    }
+  }
+}
+
+
+.agenia-mobile-menu{
+  .mean-container {
+    .mean-bar {
+      padding: 0;
+      min-height: auto;
+      background: none;
+
+      a.meanmenu-reveal {
+        display: none !important;
+      }
+    }
+
+    .mean-nav {
+      background: none;
+      margin-top: 0;
+
+      > ul {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        list-style-type: none;
+        display: block !important;
+
+        > li {
+          &:first-child {
+            > a {
+              border-top: 0 !important;
+            }
+          }
+        }
+      }
+
+      ul {
+        li {
+          a {
+            width: 100%;
+            padding: 10px 0;
+            color: #000;
+            border-top: 1px solid argb(#000,0.2);
+            font-size: 16px;
+            font-weight: 500;
+          }
+
+          .mean-expand {
+            margin-top: 0;
+            padding: 0 !important;
+            display: inline-block;
+            width: 40px !important;
+            height: 45px;
+            line-height: 50px;
+            font-weight: 400;
+            border-left: 2px solid argb(#000,0.2) !important;
+
+            &:hover {
+              background: transparent;
+              color: $theme-color;
+            }
+
+            &:before {
+              content: "\f067";
+              font-family: $icon-font;
+              @include transition(0.3s);
+            }
+
+            &.mean-clicked {
+              color: $theme-color;
+
+              &:before {
+                content: "\f068";
+              }
+            }
+          }
+
+          .sub-menu {
+            li {
+              a {
+                width: 80%;
+                font-size: 16px;
+                font-weight: 500;
+                text-transform: capitalize;
+                color: #222;
+                padding: 10px 10%;
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

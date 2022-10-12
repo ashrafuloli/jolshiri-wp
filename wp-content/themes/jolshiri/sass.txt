@@ -1,0 +1,5 @@
+sass --watch C:\laragon\www\wp-project\jolshiri\wp-content\themes\jolshiri\assets\scss\main.scss:C:\laragon\www\wp-project\jolshiri\wp-content\themes\jolshiri\assets\css\main.css
+
+sass --watch /Users/ashrafuloli/www/jolshiri/wp-content/themes/jolshiri/assets/scss/main.scss:/Users/ashrafuloli/www/jolshiri/wp-content/themes/jolshiri/assets/css/main.css
+
+
