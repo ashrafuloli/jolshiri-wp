@@ -123,7 +123,7 @@ add_action( 'jolshiri_header_style', 'jolshiri_check_header', 10 );
 
 function jolshiri_header_style() {
 	$jolshiri_header_button      = get_theme_mod( 'jolshiri_header_button', true );
-	$jolshiri_header_button_text = get_theme_mod( 'jolshiri_header_button_text', 'Get Started' );
+	$jolshiri_header_button_text = get_theme_mod( 'jolshiri_header_button_text', 'Contact Us' );
 	$jolshiri_header_button_link = get_theme_mod( 'jolshiri_header_button_link', '#' );
 	?>
     <header class="header-area">
@@ -131,18 +131,21 @@ function jolshiri_header_style() {
             <div class="row align-items-center">
                 <div class="col-xl-2 col-lg-3 col-md-4 col-6">
                     <div class="logo">
-		                <?php jolshiri_header_logo(); ?>
+						<?php jolshiri_header_logo(); ?>
                     </div>
                 </div>
-                <div class="col-xl-10 col-lg-9 col-md-8 col-6 d-flex align-items-center justify-content-end">
-	                <?php jolshiri_header_menu(); ?>
-	                <?php if ( ! empty( $jolshiri_header_button ) ): ?>
+                <div class="col-xl-8 text-center d-none d-xl-block">
+					<?php jolshiri_header_menu(); ?>
+                </div>
+                <div class="col-xl-2 col-lg-9 col-md-8 col-6 d-flex align-items-center justify-content-end">
+
+					<?php if ( ! empty( $jolshiri_header_button ) ): ?>
                         <div class="header-btn d-md-inline-block d-none">
                             <a href="<?php echo esc_url( $jolshiri_header_button_link ); ?>">
-				                <?php echo $jolshiri_header_button_text; ?>
+								<?php echo $jolshiri_header_button_text; ?> <i class="fa-solid fa-headset"></i>
                             </a>
                         </div>
-	                <?php endif; ?>
+					<?php endif; ?>
                     <div class="menu-bar d-inline-block d-xl-none">
                         <a href="#">
                             <i class="fa-regular fa-bars"></i>
@@ -348,37 +351,47 @@ add_action( 'jolshiri_footer_style', 'jolshiri_check_footer', 10 );
  * footer  style 1
  */
 function jolshiri_footer_style() {
-	$jolshiri_privacy_policy_text    = get_theme_mod( 'jolshiri_privacy_policy_text', 'Privacy Policy' );
-	$jolshiri_privacy_policy_url     = get_theme_mod( 'jolshiri_privacy_policy_url', '#' );
-	$jolshiri_cookies_text           = get_theme_mod( 'jolshiri_cookies_text', 'Cookies' );
-	$jolshiri_cookies_url            = get_theme_mod( 'jolshiri_cookies_url', '#' );
-	$jolshiri_subscription_text      = get_theme_mod( 'jolshiri_subscription_text', 'Receive free resources and webinar invitation on jolshiri management.' );
-	$jolshiri_subscription_shortcode = get_theme_mod( 'jolshiri_subscription_shortcode', '' );
+	$jolshiri_footer_info_title = get_theme_mod( 'jolshiri_footer_info_title', 'Bangladesh International School & CollegeA' );
+	$jolshiri_footer_info_text  = get_theme_mod( 'jolshiri_footer_info_text', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam commodi consequatur, dolores est fugiat in inventore laborum libero numquam pariatur quidem saepe similique tempora, tenetur ullam ut velit voluptate, voluptatibus!' );
 	?>
-    <div class="footer-area pt-65 pb-65">
-        <div class="footer-middle pb-55">
+    <div class="footer-area">
+        <div class="footer-middle pt-50 pb-50 pb-xs-30">
             <div class="container">
                 <div class="row justify-content-between">
-                    <div class="col-xl-3 col-lg-4 col-md-6 footer-col-1">
-						<?php
-						if ( is_active_sidebar( 'footer-1' ) ) {
-							dynamic_sidebar( 'footer-1' );
-						}
-						?>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 footer-col-2">
-						<?php
-						if ( is_active_sidebar( 'footer-2' ) ) {
-							dynamic_sidebar( 'footer-2' );
-						}
-						?>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 footer-col-3">
-						<?php
-						if ( is_active_sidebar( 'footer-3' ) ) {
-							dynamic_sidebar( 'footer-3' );
-						}
-						?>
+					<?php if ( ! empty( $jolshiri_footer_info_title ) ): ?>
+                        <div class="col-xl-5">
+                            <div class="footer-info mb-lg-50 mb-md-50 mb-xs-50">
+                                <h3><?php echo $jolshiri_footer_info_title; ?></h3>
+                                <p><?php echo $jolshiri_footer_info_text; ?></p>
+								<?php footer_social(); ?>
+                            </div>
+                        </div>
+					<?php endif; ?>
+
+                    <div class="col-xl-7">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 footer-col-1">
+								<?php
+								if ( is_active_sidebar( 'footer-1' ) ) {
+									dynamic_sidebar( 'footer-1' );
+								}
+								?>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4 footer-col-2">
+								<?php
+								if ( is_active_sidebar( 'footer-2' ) ) {
+									dynamic_sidebar( 'footer-2' );
+								}
+								?>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4 footer-col-3">
+								<?php
+								if ( is_active_sidebar( 'footer-3' ) ) {
+									dynamic_sidebar( 'footer-3' );
+								}
+								?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -386,28 +399,13 @@ function jolshiri_footer_style() {
         <div class="footer-bottom">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-xl-9 col-lg-12 d-md-flex align-items-center justify-content-xl-start justify-content-lg-between">
-						<?php footer_social(); ?>
-                        <div class="footer-menu">
-	                        <?php jolshiri_footer_menu(); ?>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-12 mt-lg-20 mt-md-20 mt-xs-20 text-xl-start text-center">
-                        <div class="footer-text">
+                    <div class="col-xl-12">
+                        <div class="copyright-text">
                             <p><?php jolshiri_copyright_text(); ?></p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-shape-1">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/shape-9.png" alt="shape">
-        </div>
-        <div class="footer-shape-2">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/shape-10.png" alt="shape">
-        </div>
-        <div class="footer-shape-3">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/shape-11.png" alt="shape">
         </div>
     </div>
 	<?php
@@ -417,7 +415,7 @@ function jolshiri_footer_style() {
  * copyright text
  */
 function jolshiri_copyright_text() {
-	print get_theme_mod( 'jolshiri_copyright', esc_html__( '© Copyright 2022, All Rights Reserved', 'jolshiri' ) );
+	print get_theme_mod( 'jolshiri_copyright', esc_html__( 'BISC Copyright 2022 | Created By Cyberspace', 'jolshiri' ) );
 }
 
 /**
@@ -458,13 +456,13 @@ function jolshiri_footer_menu_2() {
  * footer_social
  */
 function footer_social() {
-	$jolshiri_fb_url       = get_theme_mod( 'jolshiri_fb_url', '#' );
-	$jolshiri_instagram_url  = get_theme_mod( 'jolshiri_instagram_url', '#' );
-	$jolshiri_linkedin_url = get_theme_mod( 'jolshiri_linkedin_url', '#' );
-	$jolshiri_twitter_url  = get_theme_mod( 'jolshiri_twitter_url', '' );
-	$jolshiri_youtube_url  = get_theme_mod( 'jolshiri_youtube_url', '' );
+	$jolshiri_fb_url        = get_theme_mod( 'jolshiri_fb_url', '#' );
+	$jolshiri_instagram_url = get_theme_mod( 'jolshiri_instagram_url', '#' );
+	$jolshiri_linkedin_url  = get_theme_mod( 'jolshiri_linkedin_url', '#' );
+	$jolshiri_twitter_url   = get_theme_mod( 'jolshiri_twitter_url', '#' );
+	$jolshiri_youtube_url   = get_theme_mod( 'jolshiri_youtube_url', '#' );
 	?>
-    <div class="footer-social text-center text-lg-start">
+    <div class="footer-social">
 		<?php if ( ! empty( $jolshiri_fb_url ) ): ?>
             <a href="<?php echo esc_url( $jolshiri_fb_url ); ?>" target="_blank">
                 <i class="fa-brands fa-facebook-f"></i>

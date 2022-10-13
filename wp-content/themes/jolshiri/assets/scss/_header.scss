@@ -1,23 +1,16 @@
 @use "common" as *;
 
 .header-area {
-  padding: 24px 0;
-  position: absolute;
-  z-index: 99;
-  left: 0;
-  top: 0;
-  width: 100%;
+  padding: 10px 0;
 }
 
 .logo {
-  display: inline-block;
-
   a {
     display: inline-block;
-  }
 
-  img{
-    max-width: 190px;
+    img {
+      width: 80px;
+    }
   }
 }
 
@@ -29,122 +22,62 @@
 
     li {
       display: inline-block;
-      margin-right: 40px;
+      margin: 0 15px;
 
       &:hover {
-        a {
-          color: #8B43FE;
+        > a {
+          color: $theme-color;
         }
       }
 
       a {
-        display: inline-block;
+        display: block;
+        color: #000;
+        font-size: 20px;
         font-weight: 500;
-        font-size: 18px;
-        line-height: 24px;
-        letter-spacing: -0.25px;
-        color: #0E0E0E;
+        @include mq(xl){
+          font-size: 18px;
+        }
       }
     }
-  }
-}
-
-.menu-lock a {
-  &:after {
-    content: "\f023";
-    font-family: $icon-font;
-    margin-left: 10px;
-  }
-}
-
-.menu-bar {
-  margin-left: 30px;
-
-  a {
-    color: #0E0E0E;
-    font-size: 30px;
-    transform: translateY(2px);
-    display: inline-block;
   }
 }
 
 .header-btn {
   a {
     display: inline-block;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #0E0E0E;
-    padding: 14px 36px;
-    background: #fff;
-    border-radius: 50px;
+    color: #fff;
+    background: $theme-color;
+    padding: 14px 25px;
+    border-radius: 5px;
+
+    @include mq(xl){
+      padding: 14px 15px;
+    }
+
+    i {
+      margin-left: 5px;
+    }
 
     &:hover {
-      background: #0E0E0E;
-      color: #fff;
+      background: $hover-color;
+    }
+
+  }
+}
+
+.menu-bar{
+  margin-left: 20px;
+  a {
+    display: inline-block;
+    font-size: 16px;
+    background: #000;
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 5px;
+    &:hover{
+      background: $hover-color;
     }
   }
 }
 
-.welcome-area {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -999;
-  opacity: 0;
-  @include transition(0.3s);
-
-  &.active {
-    z-index: 999;
-    opacity: 1;
-  }
-
-  .welcome-overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background: rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-  }
-
-  .welcome-wrap {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 856px;
-    margin: 0 auto;
-    background: #FFFFFF;
-    box-shadow: 0px 16px 80px rgba(79, 86, 111, 0.11);
-    border-radius: 32px;
-    z-index: 9;
-    padding: 20px 86px 60px;
-    text-align: center;
-
-    .text {
-      p {
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 32px;
-        letter-spacing: -0.75px;
-        color: #0E0E0E;
-      }
-
-      .welcome-close {
-        display: inline-block;
-        padding: 16px 70px;
-        background: #8B43FE;
-        border-radius: 100px;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
-        color: #FFFFFF;
-        margin-top: 20px;
-      }
-    }
-  }
-}

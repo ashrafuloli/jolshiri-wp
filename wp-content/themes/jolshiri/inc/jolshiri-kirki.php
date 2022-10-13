@@ -219,7 +219,7 @@ function _header_header_fields( $fields ) {
 		'settings' => 'jolshiri_header_button_text',
 		'label'    => esc_html__( 'Button Text', 'jolshiri' ),
 		'section'  => 'section_header_logo',
-		'default'  => 'Get Started',
+		'default'  => 'Contact Us',
 		'priority' => 10,
 	);
 
@@ -425,54 +425,19 @@ function _header_footer_fields( $fields ) {
 
 	$fields[] = array(
 		'type'     => 'text',
-		'settings' => 'jolshiri_subscription_text',
-		'label'    => esc_html__( 'Subscription Text', 'jolshiri' ),
+		'settings' => 'jolshiri_footer_info_title',
+		'label'    => esc_html__( 'Footer Info Title', 'jolshiri' ),
 		'section'  => 'footer_setting',
-		'default'  => esc_html__( 'Receive free resources and webinar invitation on jolshiri management.', 'jolshiri' ),
+		'default'  => esc_html__( 'Bangladesh International School & College', 'jolshiri' ),
 		'priority' => 10,
 	);
 
 	$fields[] = array(
-		'type'     => 'text',
-		'settings' => 'jolshiri_subscription_shortcode',
-		'label'    => esc_html__( 'Subscription Form Shortcode', 'jolshiri' ),
+		'type'     => 'textarea',
+		'settings' => 'jolshiri_footer_info_text',
+		'label'    => esc_html__( 'Footer Info Description', 'jolshiri' ),
 		'section'  => 'footer_setting',
-		'priority' => 10,
-	);
-
-	$fields[] = array(
-		'type'     => 'text',
-		'settings' => 'jolshiri_privacy_policy_text',
-		'label'    => esc_html__( 'Privacy Policy label', 'jolshiri' ),
-		'section'  => 'footer_setting',
-		'default'  => esc_html__( 'Privacy Policy', 'jolshiri' ),
-		'priority' => 10,
-	);
-
-	$fields[] = array(
-		'type'     => 'text',
-		'settings' => 'jolshiri_privacy_policy_url',
-		'label'    => esc_html__( 'Privacy Policy Url', 'jolshiri' ),
-		'section'  => 'footer_setting',
-		'default'  => esc_html__( '#', 'jolshiri' ),
-		'priority' => 10,
-	);
-
-	$fields[] = array(
-		'type'     => 'text',
-		'settings' => 'jolshiri_cookies_text',
-		'label'    => esc_html__( 'Cookies label', 'jolshiri' ),
-		'section'  => 'footer_setting',
-		'default'  => esc_html__( 'Cookies', 'jolshiri' ),
-		'priority' => 10,
-	);
-
-	$fields[] = array(
-		'type'     => 'text',
-		'settings' => 'jolshiri_cookies_url',
-		'label'    => esc_html__( 'Cookies Url', 'jolshiri' ),
-		'section'  => 'footer_setting',
-		'default'  => esc_html__( '#', 'jolshiri' ),
+		'default'  => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam commodi consequatur, dolores est fugiat in inventore laborum libero numquam pariatur quidem saepe similique tempora, tenetur ullam ut velit voluptate, voluptatibus!', 'jolshiri' ),
 		'priority' => 10,
 	);
 
@@ -481,7 +446,7 @@ function _header_footer_fields( $fields ) {
 		'settings' => 'jolshiri_copyright',
 		'label'    => esc_html__( 'Copy Right', 'jolshiri' ),
 		'section'  => 'footer_setting',
-		'default'  => esc_html__( '© Copyright 2022, All Rights Reserved', 'jolshiri' ),
+		'default'  => esc_html__( 'BISC Copyright 2022 | Created By Cyberspace', 'jolshiri' ),
 		'priority' => 10,
 	);
 
@@ -502,6 +467,7 @@ function jolshiri_color_fields( $fields ) {
 		'default'     => '#ff5e14',
 		'priority'    => 10,
 	);
+
 	$fields[] = array(
 		'type'        => 'color',
 		'settings'    => 'jolshiri_header_bg_color',
