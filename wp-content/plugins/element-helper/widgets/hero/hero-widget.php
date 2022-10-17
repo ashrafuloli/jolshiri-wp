@@ -4,6 +4,7 @@ namespace ElementHelper\Widget;
 
 use \Elementor\Group_Control_Css_Filter;
 use \Elementor\Core\Schemes\Typography;
+use Elementor\Repeater;
 use \Elementor\Utils;
 use \Elementor\Control_Media;
 use \Elementor\Controls_Manager;
@@ -70,6 +71,70 @@ class Hero extends Element_El_Widget {
 			[
 				'label' => __( 'Title & Description', 'elementhelper' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$repeater = new Repeater();
+
+
+		$repeater->add_control(
+			'image',
+			[
+				'label'   => __( 'Image', 'elementhelper' ),
+				'type'    => Controls_Manager::MEDIA,
+				'default' => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+				'dynamic' => [
+					'active' => true,
+				]
+			]
+		);
+
+		$repeater->add_control(
+			'content',
+			[
+				'label'       => __( 'Message', 'elementhelper' ),
+				'type'        => Controls_Manager::TEXTAREA,
+				'label_block' => true,
+				'dynamic'     => [
+					'active' => true,
+				]
+			]
+		);
+
+
+		$repeater->add_control(
+			'name',
+			[
+				'label'       => __( 'Author Name', 'elementhelper' ),
+				'type'        => Controls_Manager::TEXT,
+				'label_block' => true,
+				'dynamic'     => [
+					'active' => true,
+				]
+			]
+		);
+
+		$repeater->add_control(
+			'destination',
+			[
+				'label'       => __( 'Author Destination', 'elementhelper' ),
+				'type'        => Controls_Manager::TEXT,
+				'label_block' => true,
+				'dynamic'     => [
+					'active' => true,
+				]
+			]
+		);
+
+		$this->add_control(
+			'testimonials',
+			[
+				'show_label'  => false,
+				'type'        => Controls_Manager::REPEATER,
+				'fields'      => $repeater->get_controls(),
+				'title_field' => '<# print(name || "Testimonial Item"); #>'
 			]
 		);
 

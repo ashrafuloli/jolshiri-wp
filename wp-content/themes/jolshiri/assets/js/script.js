@@ -85,33 +85,43 @@
         $(this).css("background", $(this).attr("data-bg-color"))
     });
 
-    function testimonialSliderActive() {
-        if (jQuery(".testimonial-slider-active .swiper-container").length > 0) {
-            let testimonialSlider1 = new Swiper('.testimonial-slider-active .swiper-container', {
-                // Optional parameters
-                slidesPerView: 1,
-                slidesPerColumn: 1,
-                paginationClickable: true,
-                loop: true,
-                // spaceBetween: 30,
+    if (jQuery(".hero-slider").length > 0) {
+        var BasicSlider = $('.hero-slider');
+        BasicSlider.on('init', function (e, slick) {
+            var $firstAnimatingElements = $('.single-slide:first-child').find('[data-animation]');
+            doAnimations($firstAnimatingElements);
+        });
+        BasicSlider.on('beforeChange', function (e, slick, currentSlide, nextSlide) {
+            var $animatingElements = $('.single-slide[data-slick-index="' + nextSlide + '"]').find('[data-animation]');
+            doAnimations($animatingElements);
+        });
+        BasicSlider.slick({
+            autoplay: true,
+            autoplaySpeed: 10000,
+            dots: false,
+            fade: true,
+            arrows: true,
+            prevArrow: '<button type="button" class="slick-prev"><i class="fa-solid fa-angle-left"></i></button>',
+            nextArrow: '<button type="button" class="slick-next"><i class="fa-solid fa-angle-right"></i></button>',
+            responsive: [
+                {breakpoint: 992, settings: {dots: false, arrows: false}}
+            ]
+        });
 
-                autoplay: {
-                    delay: 3000,
-                },
-
-                scrollbar: {
-                    el: '.swiper-scrollbar',
-                    hide: true,
-                },
-
-                // Navigation arrows
-                navigation: {
-                    nextEl: '.testimonial-button-next',
-                    prevEl: '.testimonial-button-prev',
-                },
-
-                a11y: false
-            })
+        function doAnimations(elements) {
+            var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+            elements.each(function () {
+                var $this = $(this);
+                var $animationDelay = $this.data('delay');
+                var $animationType = 'animated ' + $this.data('animation');
+                $this.css({
+                    'animation-delay': $animationDelay,
+                    '-webkit-animation-delay': $animationDelay
+                });
+                $this.addClass($animationType).one(animationEndEvents, function () {
+                    $this.removeClass($animationType);
+                });
+            });
         }
     }
 
